@@ -1,11 +1,11 @@
 import React from "react";
 import Search from "./Search";
 
-function Header() {
+function Header({ setSelectedPokemon }) {
   return (
     <div className="Header">
       <div className="Title">Pokedex</div>
-      <Search />
+      <Search setSelectedPokemon={setSelectedPokemon} />
     </div>
   );
 }

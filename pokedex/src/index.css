@@ -73,3 +73,86 @@ code {
   color: lightseagreen;
   background-color: whitesmoke;
 }
+
+.pokeInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 99%;
+  height: 590px;
+  margin: 3px 3px 3px 3px;
+  box-shadow: 10px 10px 5px -6px rgba(196, 186, 196, 1);
+}
+
+.pokeNameAndImg {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemonName {
+  color: lightseagreen;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-left: 15px;
+}
+
+.pokemon-img {
+  margin-top: 50px;
+  margin-left: 15px;
+  border: 5px solid lightskyblue;
+  border-radius: 50%;
+  padding: 5px;
+  width: 250px;
+}
+
+.pokeType {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.Type {
+  font-size: large;
+  color: lightseagreen;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.pokeStats {
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemonStat {
+  color: lightseagreen;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.pokeMoves {
+  display: flex;
+  flex-direction: column;
+}
+
+.Move {
+  color: lightseagreen;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-right: 15px;
+}
+
+.listMove {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: none;
+  margin-right: 15px;
+}
+
+.back {
+  margin: 40px 0px 0px 15px;
+}

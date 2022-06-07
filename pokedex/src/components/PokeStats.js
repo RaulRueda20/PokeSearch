@@ -5,13 +5,13 @@ function PokeStats({ pokeId }) {
   const [pokeStadistics, setPokeStadistics] = useState(null);
   useEffect(() => {
     console.log("pokeId", pokeId);
-    const getPokemonStadistics = async (pokeId) => {
-      if (pokeId !== null) {
+    const getPokemonStadistics = async () => {
+      if (pokeStadistics === null && pokeId !== null) {
         try {
           const response = await axios.get(
             "https://pokeapi.co/api/v2/stat/" + `${pokeId}` + "/"
           );
-          console.log(response);
+          setPokeStadistics(response.data);
         } catch (error) {
           console.log(error);
         }

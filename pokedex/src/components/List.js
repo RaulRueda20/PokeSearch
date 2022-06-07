@@ -2,51 +2,31 @@ import React, { useEffect, useState } from "react";
 import SingleView from "./SingleView";
 import axios from "axios";
 
-const List = () => {
+const List = ({ selectedPokemon, setSelectedPokemon }) => {
   const [allPokemons, setAllPokemons] = useState(null);
-  const [allPokeImages, setAllPokeImages] = useState(null);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log("selectedPokemon", selectedPokemon);
     setLoading(true);
     const getAllPokemons = async () => {
       if (allPokemons === null) {
         try {
-          const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
+          const response = await axios.get(
+            "https://pokeapi.co/api/v2/pokemon/?limit=70&offset=70"
+          );
           setAllPokemons(response.data.results);
         } catch (error) {
           console.log(error);
         }
       }
     };
-
-    // const getAllPokeImage = async () => {
-    //   if (allPokemons !== null) {
-    //     const pokeName = allPokemons.map((pokemons) => {
-    //       return pokemons.name;
-    //     });
-    //     try {
-    //       const response2 = await axios.get(
-    //         "https://pokeapi.co/api/v2/pokemon/" + `${pokeName}`
-    //       );
-    //       console.log("response2", response2);
-    //     } catch (error) {
-    //       console.log(error);
-    //     } finally {
-    //       setLoading(false);
-    //     }
-    //   }
-    // };
-
     getAllPokemons();
-    // getAllPokeImage();
   }, [allPokemons]);
 
   const handlePokemonView = async (e) => {
     e.preventDefault();
     const pokeUrl = e.target.value;
-    // console.log("pokeUrl", pokeUrl);
     try {
       const response2 = await axios.get(pokeUrl);
       setSelectedPokemon(response2.data);
@@ -80,7 +60,10 @@ const List = () => {
           </div>
         </>
       ) : (
-        <SingleView selectedPokemon={selectedPokemon} />
+        <SingleView
+          selectedPokemon={selectedPokemon}
+          setSelectedPokemon={setSelectedPokemon}
+        />
       )}
     </div>
   );
