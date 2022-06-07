@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 99%;
+  margin: 10px 0px 10px 0px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.Title {
+  font-size: xx-large;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: lightseagreen;
+  width: 30%;
+  margin-left: 10px;
+}
+
+.searchForm {
+  width: 70%;
+  flex-direction: row;
+}
+
+.inputSearch {
+  margin-left: 5px;
+}
+
+.infoText {
+  text-align: center;
+  font-size: larger;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  width: 99%;
+}
+
+.containerList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  width: 99%;
+  height: 15%;
+  margin: 30px 5px 5px 5px;
+}
+
+.pokeLink {
+  text-decoration: none;
+}
+
+.pokeList {
+  display: flex;
+  width: 25%;
+  height: 100px;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 1px solid lightgrey;
+  color: lightseagreen;
+  background-color: whitesmoke;
+}
