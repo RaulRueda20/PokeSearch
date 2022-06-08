@@ -28,9 +28,13 @@ code {
 .Title {
   font-size: xx-large;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: lightseagreen;
+  color: red;
   width: 30%;
   margin-left: 10px;
+}
+
+.pokeballImg {
+  size: 20px;
 }
 
 .searchForm {
@@ -66,7 +70,7 @@ code {
 .pokeList {
   display: flex;
   width: 25%;
-  height: 100px;
+  height: 105px;
   align-items: center;
   justify-content: space-evenly;
   border: 1px solid lightgrey;
@@ -93,7 +97,7 @@ code {
 }
 
 .pokemonName {
-  color: lightseagreen;
+  color: red;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-left: 15px;
 }
@@ -107,6 +111,20 @@ code {
   width: 250px;
 }
 
+.back {
+  margin: 40px 0px 0px 15px;
+  color: white;
+  background-color: red;
+  border: 1px black solid;
+  transition-duration: 0.4s;
+}
+
+.back:hover {
+  border: 1px red solid;
+  background-color: white;
+  color: red;
+}
+
 .pokeType {
   display: flex;
   flex-direction: column;
@@ -115,7 +133,7 @@ code {
 
 .Type {
   font-size: large;
-  color: lightseagreen;
+  color: red;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
@@ -125,7 +143,7 @@ code {
 }
 
 .pokemonStat {
-  color: lightseagreen;
+  color: red;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
@@ -141,7 +159,7 @@ code {
 }
 
 .Move {
-  color: lightseagreen;
+  color: red;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-right: 15px;
 }
@@ -153,10 +171,46 @@ code {
   margin-right: 15px;
 }
 
-.back {
-  margin: 40px 0px 0px 15px;
+.paginationContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .prevButton{
+.prevButton {
+  text-align: center;
+  text-decoration: none;
+  font-size: large;
+  width: 86px;
+  margin-right: 7px;
+  color: white;
+  background-color: red;
+  border: 1px black solid;
+  transition-duration: 0.4s;
+}
 
-} */
+.prevButton:hover {
+  border: 1px red solid;
+  background-color: white;
+  color: red;
+}
+
+.nextButton {
+  text-align: center;
+  text-decoration: none;
+  font-size: large;
+  width: 86px;
+  margin-right: 7px;
+  color: white;
+  background-color: red;
+  border: 1px black solid;
+  transition-duration: 0.4s;
+}
+
+.nextButton:hover {
+  border: 1px red solid;
+  background-color: white;
+  color: red;
+}

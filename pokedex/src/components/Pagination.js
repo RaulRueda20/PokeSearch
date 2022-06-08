@@ -15,8 +15,8 @@ function Pagination({ offSet, setOffSet, page, setPage }) {
       {offSet === 0 ? (
         <button
           disabled={true}
+          style={{ opacity: "0.6" }}
           className="prevButton"
-          onClick={() => prevPage()}
         >
           Prev
         </button>
@@ -32,8 +32,8 @@ function Pagination({ offSet, setOffSet, page, setPage }) {
       {page === 57 ? (
         <button
           disabled={true}
+          style={{ opacity: "0.6" }}
           className="nextButton"
-          onClick={() => nextPage()}
         >
           Next
         </button>
