@@ -40,7 +40,6 @@ code {
 }
 
 .searchForm {
-  width: 70%;
   flex-direction: row;
 }
 
@@ -52,7 +51,7 @@ code {
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   width: 99%;
-  margin-bottom: 2px;
+  margin: 5px 5px 2px 5px;
 }
 
 .containerList {
@@ -61,7 +60,7 @@ code {
   flex-wrap: wrap;
   justify-items: center;
   min-height: 15%;
-  margin: 25px;
+  margin: 5px 15px 2px 15px;
 }
 
 .pokeLink {
@@ -185,6 +184,7 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-top: 5px;
 }
 
 .navButton {

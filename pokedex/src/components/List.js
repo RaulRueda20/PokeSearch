@@ -43,7 +43,7 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
       {selectedPokemon === null ? (
         <>
           <h2 className="infoText">
-            Hello pokemaster!, select your pokemon and see his stats
+            Hello pokemaster! Select your pokemon and see his stats
           </h2>
           <div className="containerList">
             {allPokemons?.map((pokemon, index) => {
