@@ -77,6 +77,7 @@ code {
   border: 1px solid lightgrey;
   color: lightseagreen;
   background-color: whitesmoke;
+  cursor: pointer;
 }
 
 .pokeInfo {

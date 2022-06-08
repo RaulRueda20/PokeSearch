@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import SingleView from "./SingleView";
 import Pagination from "./Pagination";
 import Sprites from "./Sprites";
@@ -64,7 +64,7 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
           <div className="containerList">
             {allPokemons?.map((pokemon, index) => {
               return (
-                <>
+                <Fragment key={index}>
                   <button
                     className="pokeList"
                     key={index}
@@ -72,9 +72,9 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
                     onClick={(e) => handlePokemonView(e)}
                   >
                     {pokemon.name}
-                    <Sprites key={index + 1} pokemonName={pokemon.name} />
+                    <Sprites pokemonName={pokemon.name} />
                   </button>
-                </>
+                </Fragment>
               );
             })}
           </div>
