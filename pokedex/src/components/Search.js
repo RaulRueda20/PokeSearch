@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 function Search({ setSelectedPokemon }) {
   const [pokeSearch, setPokeSearch] = useState("");
 
   useEffect(() => {}, [pokeSearch]);
 
-  const handlePokeSearch = async (e, selectedPokemon) => {
+  const handlePokeSearch = async (e) => {
     e.preventDefault();
 
     if (pokeSearch !== "") {
-      try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon/" + `${pokeSearch}` + "/"
-        );
-        setSelectedPokemon(response.data);
-      } catch (error) {
-        alert("Pokemon not found, check the search");
+      const response = await fetch(
+        "https://pokeapi.co/api/v2/pokemon/" + `${pokeSearch}` + "/",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status !== 200) {
+        if (response.status === 404) alert("Pokemon not found, try again");
+      } else {
+        setSelectedPokemon(data);
       }
     }
   };

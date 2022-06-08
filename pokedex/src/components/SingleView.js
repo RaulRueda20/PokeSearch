@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react";
-// import PokeStats from "./PokeStats";
+import React from "react";
 
 function SingleView({ selectedPokemon, setSelectedPokemon }) {
-  const [pokeId, setPokeId] = useState(null);
-  useEffect(() => {
-    setPokeId(selectedPokemon?.id);
-  }, []);
-
   const handleBack = () => {
     setSelectedPokemon(null);
   };

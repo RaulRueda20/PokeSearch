@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import SingleView from "./SingleView";
 import Pagination from "./Pagination";
 import Sprites from "./Sprites";
@@ -12,29 +11,46 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
 
   useEffect(() => {
     const getAllPokemons = async () => {
-      try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon/?limit=" +
-            `${limits}` +
-            "&offset=" +
-            `${offSet}`
-        );
-        setAllPokemons(response?.data?.results);
-      } catch (error) {
-        console.log(error);
+      const response = await fetch(
+        "https://pokeapi.co/api/v2/pokemon/?limit=" +
+          `${limits}` +
+          "&offset=" +
+          `${offSet}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status !== 200) {
+        if (response.status === 404) alert("Pokemon not found");
+      } else {
+        setAllPokemons(data?.results);
       }
     };
     getAllPokemons();
-  }, [allPokemons]);
+  }, [offSet]);
 
   const handlePokemonView = async (e) => {
     e.preventDefault();
     const pokeUrl = e.target.value;
-    try {
-      const response2 = await axios.get(pokeUrl);
-      setSelectedPokemon(response2.data);
-    } catch (error) {
-      console.log(error);
+    const response = await fetch(pokeUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    if (response.status !== 200) {
+      if (response.status === 404) alert("Something happen, try later");
+    } else {
+      setSelectedPokemon(data);
     }
   };
 
