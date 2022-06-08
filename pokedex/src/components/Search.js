@@ -6,7 +6,7 @@ function Search({ setSelectedPokemon }) {
   const fetchSearch = useCallback(async () => {
     if (pokeSearch !== "") {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/" + `${pokeSearch}` + "/",
+        `https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`,
         {
           method: "GET",
           headers: {
@@ -23,6 +23,7 @@ function Search({ setSelectedPokemon }) {
         setSelectedPokemon(data);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokeSearch]);
 
   const handlePokeSearch = (e) => {

@@ -11,10 +11,7 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
 
   const getAllPokemons = useCallback(async () => {
     const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/?limit=" +
-        `${limits}` +
-        "&offset=" +
-        `${offSet}`,
+      `https://pokeapi.co/api/v2/pokemon/?limit=${limits}&offset=${offSet}`,
       {
         method: "GET",
         headers: {
@@ -34,11 +31,10 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
 
   useEffect(() => {
     getAllPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offSet]);
 
-  const handlePokemonView = async (e) => {
-    e.preventDefault();
-    const pokeUrl = e.target.value;
+  const fetchPokeView = useCallback(async () => {
     const response = await fetch(pokeUrl, {
       method: "GET",
       headers: {
@@ -53,6 +49,12 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
     } else {
       setSelectedPokemon(data);
     }
+  }, [pokeUrl]);
+
+  const handlePokemonView = async (e) => {
+    e.preventDefault();
+    const pokeUrl = e.target.value;
+    fetchPokeView(pokeUrl);
   };
 
   return (

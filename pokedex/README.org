@@ -1,0 +1,19 @@
+* Pokedex en línea
+
+La función de este proyecto es listar los pokemons, 
+poder hacer una búsqueda por nombre o id, y 
+mostrar las estadísticas de estos.
+
+
+* Instalación de dependencias
+
+Correr ```npm i```
+
+* Inicialización del server
+Correr ```npm run start```
+
+** Bibliotecas usadas
+
+El front del proyecto está enteramente hecho con ReactJs y CSS.
+Se consumió una API de terceros ***https://pokeapi.co/*** mediante fetch.
+

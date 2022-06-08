@@ -7,7 +7,7 @@ function Sprites({ pokemonName }) {
   const getAllPokemons = useCallback(async () => {
     setLoading(true);
     const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/" + `${pokemonName}` + "/",
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`,
       {
         method: "GET",
         headers: {
@@ -29,6 +29,7 @@ function Sprites({ pokemonName }) {
 
   useEffect(() => {
     getAllPokemons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonName]);
 
   return (
