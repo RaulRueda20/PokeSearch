@@ -7,10 +7,10 @@ mostrar las estadísticas de estos.
 
 * Instalación de dependencias
 
-Correr ```npm i```
+Correr `npm i`
 
 * Inicialización del server
-Correr ```npm run start```
+Correr `npm run start`
 
 ** Bibliotecas usadas
 
