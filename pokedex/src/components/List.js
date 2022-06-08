@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from "react";
-import SingleView from "./SingleView";
 import axios from "axios";
+import SingleView from "./SingleView";
+import Pagination from "./Pagination";
+import Sprites from "./Sprites";
 
 const List = ({ selectedPokemon, setSelectedPokemon }) => {
   const [allPokemons, setAllPokemons] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [limits] = useState(20);
+  const [offSet, setOffSet] = useState(0);
 
   useEffect(() => {
-    console.log("selectedPokemon", selectedPokemon);
-    setLoading(true);
     const getAllPokemons = async () => {
-      if (allPokemons === null) {
-        try {
-          const response = await axios.get(
-            "https://pokeapi.co/api/v2/pokemon/?limit=70&offset=70"
-          );
-          setAllPokemons(response.data.results);
-        } catch (error) {
-          console.log(error);
-        }
+      try {
+        const response = await axios.get(
+          "https://pokeapi.co/api/v2/pokemon/?limit=" +
+            `${limits}` +
+            "&offset=" +
+            `${offSet}`
+        );
+        setAllPokemons(response?.data?.results);
+      } catch (error) {
+        console.log(error);
       }
     };
     getAllPokemons();
@@ -32,8 +35,6 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
       setSelectedPokemon(response2.data);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -47,17 +48,26 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
           <div className="containerList">
             {allPokemons?.map((pokemon, index) => {
               return (
-                <button
-                  className="pokeList"
-                  key={index}
-                  value={pokemon.url}
-                  onClick={(e) => handlePokemonView(e)}
-                >
-                  {pokemon.name}
-                </button>
+                <>
+                  <button
+                    className="pokeList"
+                    key={index}
+                    value={pokemon.url}
+                    onClick={(e) => handlePokemonView(e)}
+                  >
+                    {pokemon.name}
+                    <Sprites key={index + 1} pokemonName={pokemon.name} />
+                  </button>
+                </>
               );
             })}
           </div>
+          <Pagination
+            offSet={offSet}
+            setOffSet={setOffSet}
+            page={page}
+            setPage={setPage}
+          />
         </>
       ) : (
         <SingleView

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import PokeStats from "./PokeStats";
+// import PokeStats from "./PokeStats";
 
 function SingleView({ selectedPokemon, setSelectedPokemon }) {
   const [pokeId, setPokeId] = useState(null);
   useEffect(() => {
-    console.log(selectedPokemon);
     setPokeId(selectedPokemon?.id);
   }, []);
 
@@ -34,9 +33,9 @@ function SingleView({ selectedPokemon, setSelectedPokemon }) {
       <div className="pokeStats">
         <h3 className="pokemonStat">Stats Of Your Pokemon:</h3>
         <div className="stats">
-          {selectedPokemon?.stats.map((stadistics) => {
+          {selectedPokemon?.stats.map((stadistics, index) => {
             return (
-              <p>
+              <p key={index}>
                 {stadistics.stat.name} : {stadistics.base_stat} pts
               </p>
             );
@@ -46,8 +45,8 @@ function SingleView({ selectedPokemon, setSelectedPokemon }) {
       <div className="pokeMoves">
         <h3 className="Move">Moves Of Your Pokemon:</h3>
         <div className="listMove">
-          {selectedPokemon?.moves.map((move) => {
-            return <p>{move.move.name}</p>;
+          {selectedPokemon?.moves.map((move, index) => {
+            return <p key={index}>{move.move.name}</p>;
           })}
         </div>
       </div>
