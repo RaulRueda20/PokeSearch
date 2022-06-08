@@ -17,12 +17,13 @@ code {
 .Header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: baseline;
-  width: 99%;
-  margin: 10px 0px 10px 0px;
-  padding-bottom: 5px;
+  width: 100%;
   border-bottom: 1px solid lightgrey;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  background: white;
 }
 
 .Title {
@@ -49,9 +50,9 @@ code {
 
 .infoText {
   text-align: center;
-  font-size: larger;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   width: 99%;
+  margin-bottom: 2px;
 }
 
 .containerList {
@@ -59,9 +60,8 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   justify-items: center;
-  width: 99%;
-  height: 15%;
-  margin: 30px 5px 5px 5px;
+  min-height: 15%;
+  margin: 25px;
 }
 
 .pokeLink {
@@ -91,11 +91,11 @@ code {
   flex-direction: row;
   flex-wrap: wrap;
   justify-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: baseline;
-  width: 99%;
-  margin: 3px 3px 3px 3px;
+  margin: 25px 25px 10px 25px;
   box-shadow: 10px 10px 5px -6px rgba(196, 186, 196, 1);
+  background-color: white;
 }
 
 .pokeNameAndImg {
@@ -219,4 +219,9 @@ p {
 
 h1 {
   text-align: center;
+}
+
+#root {
+  min-height: 100vh;
+  background-color: lightgray;
 }

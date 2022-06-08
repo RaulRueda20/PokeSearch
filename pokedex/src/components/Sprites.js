@@ -35,7 +35,7 @@ function Sprites({ pokemonName, handlePokemonView }) {
   return (
     <>
       {loading ? (
-        <div>Loading...</div>
+        <p>Loading...</p>
       ) : (
         <img
           src={pokemonSprite}

@@ -7,12 +7,12 @@ function Header({ setSelectedPokemon }) {
   };
 
   return (
-    <div className="Header">
+    <header className="Header">
       <div className="Title" onClick={handleBack}>
         Pokedex
       </div>
       <Search setSelectedPokemon={setSelectedPokemon} />
-    </div>
+    </header>
   );
 }
 

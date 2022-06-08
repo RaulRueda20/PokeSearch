@@ -39,12 +39,12 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
   };
 
   return (
-    <div>
+    <main>
       {selectedPokemon === null ? (
         <>
-          <div className="infoText">
+          <h2 className="infoText">
             Hello pokemaster!, select your pokemon and see his stats
-          </div>
+          </h2>
           <div className="containerList">
             {allPokemons?.map((pokemon, index) => {
               return (
@@ -75,7 +75,7 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
           setSelectedPokemon={setSelectedPokemon}
         />
       )}
-    </div>
+    </main>
   );
 };
 

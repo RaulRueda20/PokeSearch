@@ -11,7 +11,7 @@ function Pagination({ offSet, setOffSet, page, setPage }) {
   };
 
   return (
-    <div className="paginationContainer">
+    <nav className="paginationContainer">
       {offSet === 0 ? (
         <button
           disabled={true}
@@ -42,7 +42,7 @@ function Pagination({ offSet, setOffSet, page, setPage }) {
           Next
         </button>
       )}
-    </div>
+    </nav>
   );
 }
 

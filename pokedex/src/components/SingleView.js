@@ -34,7 +34,7 @@ function SingleView({ selectedPokemon, setSelectedPokemon }) {
   ) : (
     <div className="pokeInfo">
       <div className="pokeNameAndImg">
-        <h1 className="pokemonName">{pokemon?.name}</h1>
+        <h2 className="pokemonName">{pokemon?.name}</h2>
         <img
           className="pokemon-img"
           src={pokemon?.sprites?.front_default}
