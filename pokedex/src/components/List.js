@@ -34,27 +34,8 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offSet]);
 
-  const fetchPokeView = useCallback(async () => {
-    const response = await fetch(pokeUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-
-    if (response.status !== 200) {
-      if (response.status === 404) alert("Something happen, try later");
-    } else {
-      setSelectedPokemon(data);
-    }
-  }, [pokeUrl]);
-
-  const handlePokemonView = async (e) => {
-    e.preventDefault();
-    const pokeUrl = e.target.value;
-    fetchPokeView(pokeUrl);
+  const handlePokemonView = async (url) => {
+    setSelectedPokemon(url);
   };
 
   return (
@@ -72,7 +53,7 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
                     className="pokeList"
                     key={index}
                     value={pokemon.url}
-                    onClick={(e) => handlePokemonView(e)}
+                    onClick={(e) => handlePokemonView(pokemon.url)}
                   >
                     {pokemon.name}
                     <Sprites pokemonName={pokemon.name} />

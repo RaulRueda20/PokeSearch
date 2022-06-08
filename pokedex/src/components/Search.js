@@ -1,34 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 
 function Search({ setSelectedPokemon }) {
   const [pokeSearch, setPokeSearch] = useState("");
 
-  const fetchSearch = useCallback(async () => {
-    if (pokeSearch !== "") {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.status !== 200) {
-        if (response.status === 404) alert("Pokemon not found, try again");
-      } else {
-        setSelectedPokemon(data);
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pokeSearch]);
-
   const handlePokeSearch = (e) => {
     e.preventDefault();
-    fetchSearch();
+    setSelectedPokemon(`https://pokeapi.co/api/v2/pokemon/${pokeSearch}/`);
   };
 
   return (

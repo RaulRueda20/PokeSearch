@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 
-function Sprites({ pokemonName }) {
+function Sprites({ pokemonName, handlePokemonView }) {
   const [pokemonSprite, setPokemonSprite] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -37,7 +37,11 @@ function Sprites({ pokemonName }) {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <img src={pokemonSprite} alt={pokemonName} />
+        <img
+          src={pokemonSprite}
+          alt={pokemonName}
+          onClick={(e) => handlePokemonView(e)}
+        />
       )}
     </>
   );
