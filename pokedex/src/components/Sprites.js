@@ -1,31 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 function Sprites({ pokemonName }) {
   const [pokemonSprite, setPokemonSprite] = useState(null);
-  useEffect(() => {
-    const getPokeSprite = async () => {
-      const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/" + `${pokemonName}` + "/",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+  const [loading, setLoading] = useState(false);
 
-      const data = await response.json();
-
-      if (response.status !== 200) {
-        if (response.status === 404) console.log("Error loading the sprites");
-      } else {
-        setPokemonSprite(data.sprites.front_default);
+  const getAllPokemons = useCallback(async () => {
+    setLoading(true);
+    const response = await fetch(
+      "https://pokeapi.co/api/v2/pokemon/" + `${pokemonName}` + "/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    };
-    getPokeSprite();
+    );
+
+    const data = await response.json();
+
+    if (response.status !== 200) {
+      setLoading(false);
+      if (response.status === 404) console.log("Error loading the sprites");
+    } else {
+      setLoading(false);
+      setPokemonSprite(data.sprites.front_default);
+    }
   }, [pokemonName]);
 
-  return <img src={pokemonSprite} alt={pokemonName} />;
+  useEffect(() => {
+    getAllPokemons();
+  }, [pokemonName]);
+
+  return (
+    <>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <img src={pokemonSprite} alt={pokemonName} />
+      )}
+    </>
+  );
 }
 
 export default Sprites;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment, useCallback } from "react";
 import SingleView from "./SingleView";
 import Pagination from "./Pagination";
 import Sprites from "./Sprites";
@@ -9,29 +9,30 @@ const List = ({ selectedPokemon, setSelectedPokemon }) => {
   const [limits] = useState(20);
   const [offSet, setOffSet] = useState(0);
 
-  useEffect(() => {
-    const getAllPokemons = async () => {
-      const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?limit=" +
-          `${limits}` +
-          "&offset=" +
-          `${offSet}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.status !== 200) {
-        if (response.status === 404) alert("Pokemon not found");
-      } else {
-        setAllPokemons(data?.results);
+  const getAllPokemons = useCallback(async () => {
+    const response = await fetch(
+      "https://pokeapi.co/api/v2/pokemon/?limit=" +
+        `${limits}` +
+        "&offset=" +
+        `${offSet}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    };
+    );
+
+    const data = await response.json();
+
+    if (response.status !== 200) {
+      if (response.status === 404) alert("Pokemon not found");
+    } else {
+      setAllPokemons(data?.results);
+    }
+  }, [limits, offSet]);
+
+  useEffect(() => {
     getAllPokemons();
   }, [offSet]);
 

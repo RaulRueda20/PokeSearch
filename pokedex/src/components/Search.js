@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useCallback } from "react";
 
 function Search({ setSelectedPokemon }) {
   const [pokeSearch, setPokeSearch] = useState("");
 
-  useEffect(() => {}, [pokeSearch]);
-
-  const handlePokeSearch = async (e) => {
-    e.preventDefault();
-
+  const fetchSearch = useCallback(async () => {
     if (pokeSearch !== "") {
       const response = await fetch(
         "https://pokeapi.co/api/v2/pokemon/" + `${pokeSearch}` + "/",
@@ -27,6 +23,11 @@ function Search({ setSelectedPokemon }) {
         setSelectedPokemon(data);
       }
     }
+  }, [pokeSearch]);
+
+  const handlePokeSearch = (e) => {
+    e.preventDefault();
+    fetchSearch();
   };
 
   return (
