@@ -88,7 +88,6 @@ code {
   justify-content: space-between;
   align-items: baseline;
   width: 99%;
-  height: 590px;
   margin: 3px 3px 3px 3px;
   box-shadow: 10px 10px 5px -6px rgba(196, 186, 196, 1);
 }
@@ -199,4 +198,15 @@ code {
   border: 1px red solid;
   background-color: white;
   color: red;
+}
+
+@media (max-width: 860px) {
+  .pokeInfo {
+    flex-direction: column;
+    align-content: center;
+  }
+}
+
+p {
+  margin: 2px;
 }
